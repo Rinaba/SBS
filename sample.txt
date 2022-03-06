@@ -1,0 +1,5 @@
+pull requestの練習。
+やり方は以下を参考にしました。
+
+https://developer.mozilla.org/ja/docs/MDN/Contribute/GitHub_beginners
+
