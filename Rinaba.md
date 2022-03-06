@@ -6,7 +6,7 @@
   * TDD Boot Camp 2020 Online #1基調講演/ライブコーディング  
  <https://www.youtube.com/watch?v=Q-FJ3XmFlT8&list=WL&index=21>
 * Software Design 2022年3月号
-  そろそろはじめるテスト駆動開発の第3章の続きから最後まで実施
+  * そろそろはじめるテスト駆動開発の第3章の続きから最後まで実施
 
 ## 2022/02/27
 
