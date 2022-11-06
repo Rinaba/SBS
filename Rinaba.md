@@ -1,4 +1,57 @@
 # 日誌
+## 2022/11/06
+
+* 以下の環境にRustの環境構築した時に詰まったこと
+
+~~~
+% sw_vers
+ProductName:		macOS
+ProductVersion:		13.0
+BuildVersion:		22A380
+~~~
+
+cargo runが失敗する。
+
+~~~
+% cargo run
+   Compiling first-project v0.1.0 (/xxxxx/xxxxxxxxxxxx/first-project)
+error: linking with `cc` failed: exit status: 1
+:
+(略)
+:
+  = note: xcrun: error: active developer path ("/Applications/Xcode.app/Contents/Developer") does not exist
+          Use `sudo xcode-select --switch path/to/Xcode.app` to specify the Xcode that you wish to use for command line developer tools, or use `xcode-select --install` to install the standalone command line developer tools.
+          See `man xcode-select` for more details.
+
+error: could not compile `first-project` due to previous error
+~~~
+
+'Use~'以下の通りに、`xcode-select --install`したが、再度同じエラーに。
+
+もう一方のコマンド`sudo xcode-select --switch path/to/Xcode.app`はそのまま入力しても'path~が存在しない'と注意される。よく見ると、'path/to/Xcode.app'は明らかにパスの例だった。Xcode.appをインストールしていれば、Xcode.appのパスを指定すればいいが、あいにくXcode.appはインストールしていない。
+
+`xcode-select --install`でインストールされたと思われるCoomandLineToolsのパスを指定すれば良さそうなので、どこにありそうかググる。
+
+調べた結果、CommandLineToolsが以下に存在することがわかった。
+/Library/Developer/CommandLineTools
+
+参考：https://dezanari.com/homebrew-without-xcode/
+
+以下のコマンドを実行し、
+sudo xcode-select --switch /Library/Developer/CommandLineTools
+
+cargo runでRustのプログラムが実行できた。
+~~~
+% cargo run
+   Compiling first-project v0.1.0 (/xxxxx/xxxxxxxxxxxx/first-project)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.38s
+     Running `target/debug/first-project`
+Hello, world!
+~~~
+
+## 2022/03/27
+
+* Reactのチュートリアルの機能拡張をテストコードを書いて実装してみたい。  
 
 ## 2022/03/13
 
